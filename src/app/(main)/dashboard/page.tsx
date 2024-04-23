@@ -3,9 +3,14 @@ import { cookies } from "next/headers"
 import { getRequestCookie } from "@/lib/getRequestCookie"
 import { Card, CardContent } from "@/components/ui/card"
 import { Edit2 } from "iconsax-react"
-
 import ClientPage from "./client_page"
 import { getProfile } from "@/services/apiService"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "Dashboard page"
+}
 
 async function Page() {
   const session = await getRequestCookie(cookies())
@@ -34,7 +39,9 @@ async function Page() {
               className="absolute w-full h-full object-cover object-center"
             />
             <Edit2 className="absolute top-2 right-2" />
-            <p className="absolute bottom-2 left-2">@{session.username}</p>
+            <p className="absolute bottom-2 left-2 font-bold">@{session.username}</p>
+            <p className="absolute bottom-10 left-2">{dataAbout.horoscope}</p>
+            <p className="absolute bottom-14 left-2">{dataAbout.zodiac}</p>
           </CardContent>
         </Card>
 

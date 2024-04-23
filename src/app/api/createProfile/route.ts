@@ -10,8 +10,6 @@ export async function POST(req: Request, res: Response) {
     const response = await Axios(session).post("/createProfile", body)
     const data = response.data
 
-    console.log(data)
-
     return Response.json({ data, status: response.status })
   } catch (error: any) {
     return Response.json({ error: error.message, status: 500 })
